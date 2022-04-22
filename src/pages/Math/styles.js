@@ -4,7 +4,6 @@ export default makeStyles(() => ({
   resultContainer: {
     display: "flex",
     padding: "12px 8px",
-    // backgroundColor: "lightgreen",
   },
   resultText: {
     fontSize: 28,
@@ -22,7 +21,6 @@ export default makeStyles(() => ({
     },
   },
   resultBtn: {
-    marginLeft: "auto",
-    // backgroundColor: 'green'
+    marginLeft: "16px",
   },
 }));

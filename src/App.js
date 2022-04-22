@@ -28,25 +28,15 @@ export default function Parent() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route exact path="/math" element={<MathLevels />} />
-            {/* <Route
-              exact
-              path="math/compare-level-1"
-              element={<Math count={30} />}
-            />
-            <Route
-              exact
-              path="math/compare-level-2"
-              element={<Math count={18} />}
-            /> */}
             <Route
               exact
               path="math/operations-level-1"
-              element={<Math count={3} min={0} max={10}/>}
+              element={<Math count={27} min={0} max={10} />}
             />
             <Route
               exact
               path="math/operations-level-2"
-              element={<Math count={27} min={0} max={20}/>}
+              element={<Math count={27} min={0} max={20} />}
             />
           </Routes>
         </Container>

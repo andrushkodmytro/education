@@ -1,110 +1,52 @@
-import React, { useState, useEffect, useCallback, useRef } from "react";
+import React from "react";
 import useStyle from "./styles";
 
-function randomIntFromInterval(min, max) {
-  // min and max included
-  return Math.floor(Math.random() * (max - min + 1) + min);
-}
-
 const Row = ({
-  min,
-  max,
+  index,
+  row,
+  answer,
+  setAnswers,
   showResults,
-  correctHandler,
-  incorrectHandler,
-  setTouchedCount,
+  setCorrectCount,
 }) => {
   const classes = useStyle();
 
-  const [inputVal, setInputVal] = useState("");
-  const [state, setState] = useState(null);
-  const [a, setA] = useState();
-  const [b, setB] = useState();
-  const [operand, setOperand] = useState();
-  const prevStateRef = useRef(null);
-
   const onChange = (e) => {
-    setInputVal(e.target.value);
-
-    if (inputVal === "") {
-      setTouchedCount((prev) => ++prev);
+    if (+e.target.value === row.res) {
+      setCorrectCount((prev) => ++prev);
     }
+
+    if (row.res === +answer && +e.target.value !== row.res) {
+      setCorrectCount((prev) => --prev);
+    }
+
+    setAnswers((prev) => {
+      const newData = [...prev];
+      newData[index] = e.target.value;
+      return newData;
+    });
   };
-
-  const onBlur = () => {
-    resultHandler();
-  };
-
-  function init() {
-    setOperand(Math.random() < 0.5 ? "-" : "+");
-    const a = randomIntFromInterval(min, max);
-    const b = randomIntFromInterval(min, max);
-    if (a > b) {
-      setA(a);
-      setB(b);
-    } else {
-      setA(b);
-      setB(a);
-    }
-  }
-
-  useEffect(() => {
-    init();
-
-    return () => {};
-  }, []);
-
-  useEffect(() => {
-    if (!showResults && prevStateRef.current) {
-      init();
-      setInputVal("");
-      setState(null);
-    }
-
-    prevStateRef.current = showResults;
-  }, [showResults]);
-
-  console.log(prevStateRef.current, showResults);
-  const resultHandler = useCallback(() => {
-    let res;
-    if (operand === "-") {
-      res = a - b;
-    } else {
-      res = a + b;
-    }
-
-    if (res.toString() === inputVal) {
-      setState("success");
-
-      correctHandler((prev) => ++prev);
-      incorrectHandler((prev) => --prev);
-    } else {
-      setState("error");
-    }
-  }, [a, b, operand, inputVal, correctHandler, incorrectHandler]);
-
-  const res = operand === "-" ? a - b : a + b;
 
   return (
     <div className={classes.row}>
-      <span className={classes.operand}>{a}</span>
-      <span className={classes.operator}>{operand}</span>
-      <span className={classes.operand}>{b}</span>
+      <span className={classes.operand}>{row.a}</span>
+      <span className={classes.operator}>{row.operant}</span>
+      <span className={classes.operand}>{row.b}</span>
       <span className={classes.operator}>=</span>
       <input
         className={classes.input}
         maxLength="3"
         disabled={showResults}
-        value={inputVal}
+        value={answer}
         onChange={onChange}
-        onBlur={onBlur}
       />
 
-      {showResults && state === "success" && (
-        <span className={classes.success}> {res}</span>
+      {showResults && answer !== "" && +answer === +row.res && (
+        <span className={classes.success}> {row.res}</span>
       )}
-      {showResults && state === "error" && (
-        <span className={classes.error}>{res}</span>
+
+      {showResults && (answer === "" || +answer !== row.res) && (
+        <span className={classes.error}>{row.res}</span>
       )}
     </div>
   );

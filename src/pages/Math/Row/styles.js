@@ -14,7 +14,7 @@ export default makeStyles(() => ({
     minWidth: 40,
   },
   input: {
-    width: 30,
+    width: 60,
     fontSize: 28,
     padding: "0 2px,",
     borderRadius: 8,
