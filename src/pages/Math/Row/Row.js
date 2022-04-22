@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, useRef } from "react";
 import useStyle from "./styles";
 
 function randomIntFromInterval(min, max) {
@@ -7,6 +7,8 @@ function randomIntFromInterval(min, max) {
 }
 
 const Row = ({
+  min,
+  max,
   showResults,
   correctHandler,
   incorrectHandler,
@@ -19,6 +21,7 @@ const Row = ({
   const [a, setA] = useState();
   const [b, setB] = useState();
   const [operand, setOperand] = useState();
+  const prevStateRef = useRef(null);
 
   const onChange = (e) => {
     setInputVal(e.target.value);
@@ -32,10 +35,10 @@ const Row = ({
     resultHandler();
   };
 
-  useEffect(() => {
+  function init() {
     setOperand(Math.random() < 0.5 ? "-" : "+");
-    const a = randomIntFromInterval(0, 10);
-    const b = randomIntFromInterval(0, 10);
+    const a = randomIntFromInterval(min, max);
+    const b = randomIntFromInterval(min, max);
     if (a > b) {
       setA(a);
       setB(b);
@@ -43,10 +46,25 @@ const Row = ({
       setA(b);
       setB(a);
     }
+  }
+
+  useEffect(() => {
+    init();
 
     return () => {};
   }, []);
 
+  useEffect(() => {
+    if (!showResults && prevStateRef.current) {
+      init();
+      setInputVal("");
+      setState(null);
+    }
+
+    prevStateRef.current = showResults;
+  }, [showResults]);
+
+  console.log(prevStateRef.current, showResults);
   const resultHandler = useCallback(() => {
     let res;
     if (operand === "-") {
@@ -62,9 +80,6 @@ const Row = ({
       incorrectHandler((prev) => --prev);
     } else {
       setState("error");
-
-      correctHandler((prev) => --prev);
-      incorrectHandler((prev) => ++prev);
     }
   }, [a, b, operand, inputVal, correctHandler, incorrectHandler]);
 

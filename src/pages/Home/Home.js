@@ -1,4 +1,5 @@
 import React from "react";
+import { Grid, Button } from "@mui/material";
 import { Link } from "react-router-dom";
 import useStyles from "./styles";
 
@@ -6,13 +7,51 @@ export default function Home() {
   const classes = useStyles();
 
   return (
-    <div className={classes.container}>
-      <div className={classes.elem}>
-        <Link to="/math">Math</Link>
-      </div>
-      <div className={classes.elem}>Logic</div>
-      <div className={classes.elem}>Math</div>
-      <div className={classes.elem}>Logic</div>
-    </div>
+    <Grid container spacing={2} className={classes.container}>
+      <Grid item xs={3}>
+        <Button
+          className={classes.elem}
+          variant="contained"
+          color="secondary"
+          to="/math"
+          component={Link}
+        >
+          Math
+        </Button>
+      </Grid>
+      <Grid item xs={3} >
+        <Button
+          className={classes.elem}
+          variant="contained"
+          color="secondary"
+          to="/math"
+          component={Link}
+        >
+          logic
+        </Button>
+      </Grid>
+      <Grid item xs={3} >
+        <Button
+          className={classes.elem}
+          variant="contained"
+          color="secondary"
+          to="/math"
+          component={Link}
+        >
+          ABC
+        </Button>
+      </Grid>
+      <Grid item xs={3} >
+        <Button
+          className={classes.elem}
+          variant="contained"
+          color="secondary"
+          to="/math"
+          component={Link}
+        >
+          Animals
+        </Button>
+      </Grid>
+    </Grid>
   );
 }
