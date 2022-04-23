@@ -75,7 +75,7 @@ function MathComponent({ count = 3, min = 0, max = 10 }) {
 
   return (
     <>
-      <Paper style={{ padding: 24, backgroundColor: "#bfffc4" }}>
+      <Paper>
         <Grid container>
           {data.map((row, index) => {
             return (
@@ -103,8 +103,8 @@ function MathComponent({ count = 3, min = 0, max = 10 }) {
           </div>
           <Button
             style={{ marginLeft: "auto" }}
-            variant="contained"
-            color="secondary"
+            variant="outlined"
+            color="primary"
             onClick={() => {
               setShowDialog(true);
             }}
@@ -131,12 +131,13 @@ function MathComponent({ count = 3, min = 0, max = 10 }) {
         <DialogContent>Ви дійсно бажаєте завершити завдання?</DialogContent>
         <DialogActions>
           <Button
+            style={{ marginRight: 16 }}
             variant="contained"
             color="primary"
             to="/math"
             component={Link}
           >
-            Так, завершити
+            Завершити
           </Button>
           <Button
             variant="contained"
@@ -145,7 +146,7 @@ function MathComponent({ count = 3, min = 0, max = 10 }) {
               setShowDialog(false);
             }}
           >
-            Ні, продовжити
+            Продовжити
           </Button>
         </DialogActions>
       </Dialog>
