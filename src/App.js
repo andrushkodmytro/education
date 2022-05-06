@@ -6,6 +6,7 @@ import MathLevels from "./pages/Math/MathLevels/MathLevels";
 import Container from "@mui/material/Container";
 import AppBar from "./Containers/AppBar/AppBar";
 import Math from "./pages/Math/Math";
+import Statistics from "./pages/Statistics/Statistics";
 import theme from "./theme";
 import "./App.css";
 
@@ -18,25 +19,12 @@ export default function Parent() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route exact path="/math" element={<MathLevels />} />
+            <Route exact path="math/operations/:levelId" element={<Math />} />
+
             <Route
               exact
-              path="math/operations-level-1"
-              element={<Math count={27} min={0} max={10} />}
-            />
-            <Route
-              exact
-              path="math/operations-level-2"
-              element={<Math count={27} min={0} max={20} />}
-            />
-            <Route
-              exact
-              path="math/operations-level-3"
-              element={<Math count={27} min={0} max={30} />}
-            />
-            <Route
-              exact
-              path="math/operations-level-4"
-              element={<Math count={27} min={0} max={40} />}
+              path="math/operations/:levelId/statistics"
+              element={<Statistics />}
             />
           </Routes>
         </Container>

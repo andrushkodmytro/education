@@ -12,29 +12,23 @@ export default function MathLevels() {
         Виберіть завдання і рівень
       </Typography>
       <div className={classes.container}>
-        {/* <Card className={classes.elem}>
-        <Link to="/math">{"1<2"}</Link>
-      </Card>
-      <Card className={classes.elem}>
-        <Link to="/math"> {"1+2<2+2"}</Link>
-      </Card> */}
         <Card className={classes.elem}>
-          <CardActionArea component={Link} to="/math/operations-level-1">
+          <CardActionArea component={Link} to="/math/operations/1">
             {"1+2=3"}
           </CardActionArea>
         </Card>
         <Card className={classes.elem}>
-          <CardActionArea component={Link} to="/math/operations-level-2">
+          <CardActionArea component={Link} to="/math/operations/2">
             {"19-17=2"}
           </CardActionArea>
         </Card>
         <Card className={classes.elem}>
-          <CardActionArea component={Link} to="/math/operations-level-3">
+          <CardActionArea component={Link} to="/math/operations/3">
             {"28-15=13"}
           </CardActionArea>
         </Card>
         <Card className={classes.elem}>
-          <CardActionArea component={Link} to="/math/operations-level-4">
+          <CardActionArea component={Link} to="/math/operations/4">
             {"38-29=9"}
           </CardActionArea>
         </Card>
