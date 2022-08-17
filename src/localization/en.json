@@ -1,5 +1,5 @@
 {
-    "Tree {{count}}": "Tree",
+    "Tree {{count}}": "Tree{{count}}",
     "Product {{name}}": "Products",
     "Physical products": "Physical products",
     "Revenue": "Revenue",
