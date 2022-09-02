@@ -1,8 +1,5 @@
 {
-    "Tree {{count}}": {
-        "one": "Tree{{count}}",
-        "other": ""
-    },
+    "Tree {{count}}": "Tree{{count}}",
     "Product {{name}}": "Products",
     "Physical products": "Physical products"
 }
