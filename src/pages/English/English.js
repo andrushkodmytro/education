@@ -1,9 +1,10 @@
 import React from "react";
 import { Grid, Button } from "@mui/material";
 import { Link } from "react-router-dom";
+
 import useStyles from "./styles";
 
-export default function Home() {
+export default function English() {
   const classes = useStyles();
 
   return (
@@ -13,10 +14,32 @@ export default function Home() {
           className={classes.elem}
           variant="contained"
           color="secondary"
-          to="/math"
+          to="/english/alphabet/learn"
           component={Link}
         >
-          Math
+          Alphabet learning
+        </Button>
+      </Grid>
+      {/* <Grid item xs={3} >
+        <Button
+          className={classes.elem}
+          variant="contained"
+          color="secondary"
+          to="/english/alphabet/test"
+          component={Link}
+        >
+          Alphabet checking
+        </Button>
+      </Grid> */}
+      <Grid item xs={3} >
+        <Button
+          className={classes.elem}
+          variant="contained"
+          color="secondary"
+          to="/english/numbers/learn"
+          component={Link}
+        >
+          Numbers
         </Button>
       </Grid>
       <Grid item xs={3} >
@@ -24,32 +47,22 @@ export default function Home() {
           className={classes.elem}
           variant="contained"
           color="secondary"
-          to="/math"
+          to="/english/days/learn"
           component={Link}
         >
-          logic
+          Days
         </Button>
       </Grid>
+
       <Grid item xs={3} >
         <Button
           className={classes.elem}
           variant="contained"
           color="secondary"
-          to="/english"
+          to="/english/fruits/learn"
           component={Link}
         >
-          English
-        </Button>
-      </Grid>
-      <Grid item xs={3} >
-        <Button
-          className={classes.elem}
-          variant="contained"
-          color="secondary"
-          to="/math"
-          component={Link}
-        >
-          Animals
+          Fruits
         </Button>
       </Grid>
     </Grid>

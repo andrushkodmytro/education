@@ -6,7 +6,14 @@ import MathLevels from "./pages/Math/MathLevels/MathLevels";
 import Container from "@mui/material/Container";
 import AppBar from "./Containers/AppBar/AppBar";
 import Math from "./pages/Math/Math";
+import English from "./pages/English/English";
 import Statistics from "./pages/Statistics/Statistics";
+import AlphabetLearn from "./pages/AlphabetLearn/AlphabetLearn";
+// import AlphabetTest from "./pages/AlphabetTest/AlphabetTest";
+import NumbersLearn from "./pages/NumbersLearn";
+import Days from "./pages/Days";
+import Fruits from "./pages/Fruits";
+
 import theme from "./theme";
 import "./App.css";
 
@@ -20,7 +27,12 @@ export default function Parent() {
             <Route path="/" element={<Home />} />
             <Route exact path="/math" element={<MathLevels />} />
             <Route exact path="math/operations/:levelId" element={<Math />} />
-
+            <Route exact path="/english" element={<English />} />
+            <Route exact path="/english/alphabet/learn" element={<AlphabetLearn />} />
+            {/* <Route exact path="/english/alphabet/test" element={<AlphabetTest />} /> */}
+            <Route exact path="/english/numbers/learn" element={<NumbersLearn />} />
+            <Route exact path="/english/days/learn" element={<Days />} />
+            <Route exact path="/english/fruits/learn" element={<Fruits />} />
             <Route
               exact
               path="math/operations/:levelId/statistics"
