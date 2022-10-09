@@ -14,10 +14,10 @@ export default function English() {
           className={classes.elem}
           variant="contained"
           color="secondary"
-          to="/english/alphabet/learn"
+          to="/english/lessons/08-10-2022"
           component={Link}
         >
-          Alphabet learning
+          08.10.2022
         </Button>
       </Grid>
       {/* <Grid item xs={3} >
@@ -31,7 +31,7 @@ export default function English() {
           Alphabet checking
         </Button>
       </Grid> */}
-      <Grid item xs={3}>
+      {/* <Grid item xs={3}>
         <Button
           className={classes.elem}
           variant="contained"
@@ -75,7 +75,7 @@ export default function English() {
         >
           Lessons
         </Button>
-      </Grid>
+      </Grid> */}
     </Grid>
   );
 }
